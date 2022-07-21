@@ -1,9 +1,18 @@
-const response = (value, index = 1) => {
+const { writeFile } = require("fs");
+
+let file = "";
+
+const multiplication = (value, index = 1) => {
   while (index <= 10) {
     let res = value * index;
-    console.log(`${value} x ${index} = ${res}`);
+    file += `${value} x ${index} = ${res}\n`;
     index++;
   }
 };
 
-response(5);
+multiplication(5);
+
+writeFile("multiplication.txt", file, (err) => {
+  if (err) throw err;
+  console.log("The file has been saved!");
+});

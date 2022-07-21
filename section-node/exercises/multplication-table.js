@@ -1,7 +1,13 @@
 const { createFile } = require("./../helpers/multplication-table");
 
-const value = 12;
+const [, , arg3 = "base"] = process.argv;
+const [, base] = arg3.split("=");
 
-createFile(value)
-  .then(console.log("created file"))
-  .catch((err) => console.log(err));
+!base
+  ? console.error({
+      message: "Base needs a value",
+      error: "File was not created!",
+    })
+  : createFile(base)
+      .then(console.log("created file"))
+      .catch((err) => console.log(err));

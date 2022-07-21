@@ -9,6 +9,7 @@ const createFile = async (base) => {
   }
 
   writeFileSync(`multiplication-${base}.txt`, file);
+  console.log(file);
 };
 
 module.exports = { createFile };
